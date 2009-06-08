@@ -1,0 +1,81 @@
+images {
+	image, "lowbatt.png" COMP;
+	image, "border.png" COMP;
+}
+
+collections {
+	group {
+		name, "elowbatt";
+		min, 300 300;
+		max, 300 300;
+		parts {
+			part {
+				name, "elowbatt/background";
+				type, RECT;
+				description {
+					state, "default" 0.0;
+					color, 255 255 255 255;
+					rel1 { relative, 0.0 0.0; offset, 0 0; }
+					rel2 { relative, 1.0 1.0; offset, 0 0; }
+				}
+			}
+			part {
+				name, "elowbatt/image";
+				type, IMAGE;
+				mouse_events, 0;
+				description {
+					state, "default" 0.0;
+					min, 300 292;
+					max, 300 292;
+					rel1 { relative, 0.0 0.0; offset, 0 0; }
+					rel2 { relative, 1.0 1.0; offset, 0 0; }
+					image {
+						normal, "lowbatt.png";
+					}
+					fill {
+						size {
+							relative, 1.0 1.0;
+							offset, 0 0;
+						}
+					}
+				}
+			}
+			part {
+				name, "elowbatt/border";
+				type, IMAGE;
+				description {
+					state, "default" 0.0;
+					rel1 { relative, 0.0 0.0; offset, 0 0; }
+					rel2 { relative, 1.0 1.0; offset, -1 -1; }
+					image {
+						normal, "border.png";
+						border, 9 9 9 9;
+						middle, 0;
+					}
+					fill {
+						smooth, 0;
+					}
+				}
+			}
+		}
+	}
+
+	group {
+		name, "main_window";
+		min, 600 300;
+		max, 600 300;
+		parts {
+			part {
+				name, "background";
+				type, RECT;
+				description {
+					state, "default" 0.0;
+					color, 255 255 255 255;
+					rel1 { relative, 0.0 0.0; offset, 0 0; }
+					rel2 { relative, 1.0 1.0; offset, -1 -1; }
+				}
+			}
+		}
+	}
+}
+
