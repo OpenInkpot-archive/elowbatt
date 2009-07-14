@@ -18,7 +18,7 @@
 
 #define LOWBATT "LOWBATT"
 
-Ecore_Evas *r, *main_win;
+Ecore_Evas *main_win;
 
 void exit_all(void* param) { ecore_main_loop_quit(); }
 
@@ -46,7 +46,6 @@ key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 
 	if(!strcmp(k, "Escape") || !strcmp(k, "Return")) {
 		ecore_evas_hide(main_win);
-		ecore_evas_hide(r);
 	}
 }
 
@@ -68,7 +67,6 @@ static int _client_del(void* param, int ev_type, void* ev)
 
     /* Handle */
 	if(strlen(LOWBATT) == msg->size && !strncmp(LOWBATT, msg->msg, msg->size)) {
-		ecore_evas_show(r);
 		ecore_evas_show(main_win);
 	}
 
@@ -87,6 +85,18 @@ static int _client_data(void* param, int ev_type, void* ev)
     memcpy(msg->msg + msg->size, e->data, e->size);
     msg->size += e->size;
     return 0;
+}
+
+static void main_win_resize_handler(Ecore_Evas* main_win)
+{
+	ecore_evas_hide(main_win);
+	int w, h;
+	Evas* canvas = ecore_evas_get(main_win);
+	evas_output_size_get(canvas, &w, &h);
+
+	Evas_Object* edje = evas_object_name_find(canvas, "edje");
+	evas_object_resize(edje, w, h);
+	ecore_evas_show(main_win);
 }
 
 int main(int argc, char **argv)
@@ -110,22 +120,12 @@ int main(int argc, char **argv)
 
 	ecore_x_io_error_handler_set(exit_all, NULL);
 
-	r = ecore_evas_software_x11_new(0, 0, 0, 0, 600, 800);
-	ecore_evas_borderless_set(r, 0);
-	ecore_evas_shaped_set(r, 1);
-	ecore_evas_move(r, 0, 0);
-	ecore_evas_title_set(r, "elowbatt_r");
-	ecore_evas_name_class_set(r, "elowbatt_r", "elowbatt_r");
-
-	main_win = ecore_evas_software_x11_new(0, 0, 0, 0, 300, 300);
+	main_win = ecore_evas_software_x11_new(0, 0, 0, 0, 600, 800);
 	ecore_evas_borderless_set(main_win, 0);
-	ecore_evas_shaped_set(main_win, 0);
-	ecore_evas_move(main_win, 150, 250);
 	ecore_evas_title_set(main_win, "elowbatt");
 	ecore_evas_name_class_set(main_win, "elowbatt", "elowbatt");
-	ecore_x_icccm_transient_for_set(
-			ecore_evas_software_x11_window_get(main_win),
-			ecore_evas_software_x11_window_get(r));
+
+	ecore_evas_callback_resize_set(main_win, main_win_resize_handler);
 
 	Evas *main_canvas = ecore_evas_get(main_win);
 
@@ -133,12 +133,14 @@ int main(int argc, char **argv)
 	evas_object_name_set(edje, "edje");
 	edje_object_file_set(edje, DATADIR "/elowbatt/themes/elowbatt.edj", "elowbatt");
 	evas_object_move(edje, 0, 0);
-	evas_object_resize(edje, 300, 300);
+	evas_object_resize(edje, 600, 800);
 	evas_object_show(edje);
 	evas_object_focus_set(edje, 1);
 	evas_object_event_callback_add(edje, EVAS_CALLBACK_KEY_UP, &key_handler, NULL);
 
-//	ecore_evas_show(r);
+	edje_object_part_text_set(edje, "elowbatt/title", gettext("Low Battery"));
+	edje_object_part_text_set(edje, "elowbatt/text", gettext("Please recharge your device"));
+
 //	ecore_evas_show(main_win);
 	ecore_main_loop_begin();
 
