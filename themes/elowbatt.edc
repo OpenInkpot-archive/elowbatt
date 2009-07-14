@@ -63,7 +63,7 @@ collections {
 				description {
 					state, "default" 0.0;
 					color, 255 255 255 0;
-					rel1 { relative, 0.0 0.0; offset, 200 150; to, "elowbatt/image"; }
+					rel1 { relative, 0.0 0.0; offset, 200 130; to, "elowbatt/image"; }
 					rel2 { relative, 0.0 0.0; offset, 580 300; to, "elowbatt/image"; }
 				}
 			}
