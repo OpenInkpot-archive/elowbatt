@@ -112,6 +112,9 @@ int main(int argc, char **argv)
 	if(!edje_init())
 		die("Unable to initialize Edje\n");
 
+	setlocale(LC_ALL, "");
+	textdomain("elowbatt");
+
 	ecore_con_server_add(ECORE_CON_LOCAL_USER, "elowbatt", 0, NULL);
 
 	ecore_event_handler_add(ECORE_CON_EVENT_CLIENT_ADD, _client_add, NULL);
