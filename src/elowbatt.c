@@ -17,6 +17,7 @@
 #endif
 
 #define LOWBATT "LOWBATT"
+#define CHARGING "CHARGING"
 
 Ecore_Evas *main_win;
 
@@ -31,11 +32,17 @@ static void die(const char* fmt, ...)
 	exit(EXIT_FAILURE);
 }
 
+static void hide_app()
+{
+    ecore_evas_hide(main_win);
+}
+
 typedef struct
 {
     char* msg;
     int size;
 } client_data_t;
+
 
 static void
 key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
@@ -44,11 +51,9 @@ key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 
 	const char* k = e->keyname;
 
-	if(!strcmp(k, "Escape") || !strcmp(k, "Return")) {
-		ecore_evas_hide(main_win);
-	}
+	if(!strcmp(k, "Escape") || !strcmp(k, "Return"))
+        hide_app();
 }
-
 
 static int _client_add(void* param, int ev_type, void* ev)
 {
@@ -69,6 +74,9 @@ static int _client_del(void* param, int ev_type, void* ev)
 	if(strlen(LOWBATT) == msg->size && !strncmp(LOWBATT, msg->msg, msg->size)) {
 		ecore_evas_show(main_win);
 	}
+
+    if(strlen(CHARGING) == msg->size && !strncmp(CHARGING, msg->msg, msg->size))
+        hide_app();
 
     //printf(": %.*s(%d)\n", msg->size, msg->msg, msg->size);
 

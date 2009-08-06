@@ -11,3 +11,10 @@ if [ x"$ACTION" = x"change" \
 then
 	uk-send elowbatt "LOWBATT"
 fi
+
+if [ x"$ACTION" = x"change" \
+       -a x"$POWER_SUPPLY_TYPE" = x"USB" \
+       -a x"$POWER_SUPPLY_ONLINE" = x1 ]
+then
+    uk-send elowbatt CHARGING
+fi
