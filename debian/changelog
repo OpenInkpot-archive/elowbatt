@@ -1,3 +1,11 @@
+elowbatt (0.2-5) UNRELEASED; urgency=low
+
+  [ Mikhail Gusarov ]
+  * Added hiding dialog when USB cable is connected.
+  * Lot of various cleanups in code and packaging
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 06 Aug 2009 21:50:59 +0700
+
 elowbatt (0.2-4) asimov; urgency=low
 
   * set alarm level - 10%
