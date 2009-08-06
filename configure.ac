@@ -1,5 +1,5 @@
 AC_PREREQ(2.57)
-AC_INIT(elowbatt, 0.1, lunohod@openinkpot.org)
+AC_INIT(elowbatt, 0.2, lunohod@openinkpot.org)
 AM_INIT_AUTOMAKE(foreign)
 
 AC_PROG_CC
