@@ -1,0 +1,24 @@
+# elowbatt
+# This file is put in the public domain.
+# Alexander Kerner <lunohod@openinkpot.org>, 2009.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: elowbatt 0.1\n"
+"Report-Msgid-Bugs-To: lunohod@openinkpot.org\n"
+"POT-Creation-Date: 2009-07-14 16:46+0200\n"
+"PO-Revision-Date: 2009-08-19 11:48+0100\n"
+"Last-Translator: ben1981 <ben1981@centrum.cz>\n"
+"Language-Team: Czech <openinkpot-l10n@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/elowbatt.c:141
+msgid "Low Battery"
+msgstr "Vybitá Baterie"
+
+#: src/elowbatt.c:142
+msgid "Please recharge your device"
+msgstr "Prosím nabij své zařízení"
