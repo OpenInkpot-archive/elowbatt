@@ -12,6 +12,8 @@
 #include <Evas.h>
 #include <Edje.h>
 
+#include <libkeys.h>
+
 #ifndef DATADIR
 #define DATADIR "."
 #endif
@@ -47,11 +49,10 @@ typedef struct
 static void
 key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 {
-	Evas_Event_Key_Up* e = (Evas_Event_Key_Up*)event_info;
+    const char* action = keys_lookup_by_event((keys_t*)data, "default",
+                                              (Evas_Event_Key_Up*)event_info);
 
-	const char* k = e->keyname;
-
-	if(!strcmp(k, "Escape") || !strcmp(k, "Return"))
+    if(action && !strcmp(action, "Close"))
         hide_app();
 }
 
@@ -123,6 +124,8 @@ int main(int argc, char **argv)
 	setlocale(LC_ALL, "");
 	textdomain("elowbatt");
 
+    keys_t* keys = keys_alloc("elowbatt");
+
 	ecore_con_server_add(ECORE_CON_LOCAL_USER, "elowbatt", 0, NULL);
 
 	ecore_event_handler_add(ECORE_CON_EVENT_CLIENT_ADD, _client_add, NULL);
@@ -147,7 +150,7 @@ int main(int argc, char **argv)
 	evas_object_resize(edje, 600, 800);
 	evas_object_show(edje);
 	evas_object_focus_set(edje, 1);
-	evas_object_event_callback_add(edje, EVAS_CALLBACK_KEY_UP, &key_handler, NULL);
+	evas_object_event_callback_add(edje, EVAS_CALLBACK_KEY_UP, &key_handler, keys);
 
 	edje_object_part_text_set(edje, "elowbatt/title", gettext("Low Battery"));
 	edje_object_part_text_set(edje, "elowbatt/text", gettext("Please recharge your device"));
@@ -160,6 +163,8 @@ int main(int argc, char **argv)
 	ecore_con_shutdown();
 	ecore_shutdown();
 	evas_shutdown();
+
+    keys_free(keys);
 
 	return 0;
 }
