@@ -22,5 +22,3 @@ msgstr "Bateria baixa"
 #: src/elowbatt.c:142
 msgid "Please recharge your device"
 msgstr "Per favor, recarregui el seu dispositiu"
-"Внимание!<br>Пожалуйста, зарядите устройство.<br>4 часа от USB-разъема ПК."
-"<br>2 часа от сетевого блока питания."
