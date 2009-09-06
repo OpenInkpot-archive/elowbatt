@@ -1,7 +1,7 @@
 # elowbatt
 # This file is put in the public domain.
 # Alexander Kerner <lunohod@openinkpot.org>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: eshutdown 0.1\n"
@@ -20,5 +20,4 @@ msgstr "Низький рівень заряду батареї"
 
 #: src/elowbatt.c:142
 msgid "Please recharge your device"
-msgstr "Увага! <br>Будь ласка, підзарядіть пристрій.<br>4 години від USB-роз`єму ПК.<br>2 години від мережевого блоку живлення"
-
+msgstr "Будь ласка, підзарядіть пристрій.<br>4 години від USB-роз'єму ПК.<br>2 години від мережевого блоку живлення"
