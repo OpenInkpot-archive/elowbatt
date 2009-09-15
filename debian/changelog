@@ -1,6 +1,8 @@
 elowbatt (0.3-2) asimov; urgency=low
 
   * Theme adjusted to new ecore engine.
+  * Added translations: Bengali.
+  * Updated translations: Ukrainian.
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 16 Sep 2009 05:04:53 +0700
 
