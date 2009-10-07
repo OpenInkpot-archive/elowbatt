@@ -1,3 +1,9 @@
+elowbatt (0.3-4) asimov; urgency=low
+
+  * Added translations: Hungarian.
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 07 Oct 2009 15:40:50 +0700
+
 elowbatt (0.3-3) asimov; urgency=low
 
   * Move elowbatt.sh to /lib/mdev/handlers.d
