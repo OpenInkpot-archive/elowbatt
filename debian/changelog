@@ -1,3 +1,9 @@
+elowbatt (0.3-5) asimov; urgency=low
+
+  * Added translations: Belarusian, Latvian.
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Mon, 02 Nov 2009 22:03:05 +0600
+
 elowbatt (0.3-4) asimov; urgency=low
 
   * Added translations: Hungarian.
