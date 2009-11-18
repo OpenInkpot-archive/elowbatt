@@ -2,7 +2,7 @@
 # elowbatt
 # This file is put in the public domain.
 # Alexander Kerner <lunohod@openinkpot.org>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: eshutdown 0.1\n"
