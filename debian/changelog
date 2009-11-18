@@ -1,3 +1,9 @@
+elowbatt (0.3-6) asimov; urgency=low
+
+  * Fixed background of message box (OI#531)
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 18 Nov 2009 06:45:01 +0600
+
 elowbatt (0.3-5) asimov; urgency=low
 
   * Added translations: Belarusian, Latvian.
