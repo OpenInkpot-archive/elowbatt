@@ -1,3 +1,10 @@
+elowbatt (0.3.7) zelazny; urgency=low
+
+  * Rebuild due to EFL update.
+  * Update copyright info.
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 14 Jan 2010 13:32:49 +0600
+
 elowbatt (0.3-6) asimov; urgency=low
 
   * Fixed background of message box (OI#531)
