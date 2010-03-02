@@ -1,6 +1,6 @@
-elowbatt (0.3.8) UNRELEASED; urgency=low
+elowbatt (0.3.8) zelazny; urgency=low
 
-  * New translations: Japanese.
+  * New translations: Japanese, French.
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 14 Jan 2010 13:33:43 +0600
 
