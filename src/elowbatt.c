@@ -33,6 +33,8 @@
 
 #include <libkeys.h>
 
+#include <libeoi_themes.h>
+
 #ifndef DATADIR
 #define DATADIR "."
 #endif
@@ -160,9 +162,9 @@ int main(int argc, char **argv)
 
     Evas *main_canvas = ecore_evas_get(main_win);
 
-    Evas_Object *edje = edje_object_add(main_canvas);
+    Evas_Object *edje
+        = eoi_create_themed_edje(main_canvas, "elowbatt", "elowbatt");
     evas_object_name_set(edje, "edje");
-    edje_object_file_set(edje, DATADIR "/elowbatt/themes/elowbatt.edj", "elowbatt");
     evas_object_move(edje, 0, 0);
     evas_object_resize(edje, 600, 800);
     evas_object_show(edje);

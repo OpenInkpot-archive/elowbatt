@@ -1,8 +1,9 @@
-INCLUDES = @EFL_CFLAGS@ @LIBKEYS_CFLAGS@
-AM_CFLAGS=-Wall -DDATADIR='"$(datadir)"'
+INCLUDES = @EFL_CFLAGS@ @LIBKEYS_CFLAGS@ @EOI_CFLAGS@
+AM_CFLAGS=-Wall
 
 bin_PROGRAMS = elowbatt
 
 elowbatt_SOURCES = elowbatt.c
-elowbatt_LDADD = @EFL_LIBS@ @LIBKEYS_LIBS@
+elowbatt_LDADD = @EFL_LIBS@ @LIBKEYS_LIBS@ @EOI_LIBS@
+
 
