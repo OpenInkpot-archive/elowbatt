@@ -38,10 +38,6 @@
 #include <libeoi_themes.h>
 #include <libeoi_dialog.h>
 
-#ifndef DATADIR
-#define DATADIR "."
-#endif
-
 #define LOWBATT "LOWBATT"
 #define CHARGING "CHARGING"
 
