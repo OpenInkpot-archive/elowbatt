@@ -24,6 +24,7 @@
 #include <unistd.h>
 #include <libintl.h>
 #include <locale.h>
+#include <err.h>
 
 #include <Ecore.h>
 #include <Ecore_X.h>
@@ -47,15 +48,6 @@
 Ecore_Evas *main_win;
 
 void exit_all(void* param) { ecore_main_loop_quit(); }
-
-static void die(const char* fmt, ...)
-{
-    va_list ap;
-    va_start(ap, fmt);
-    vfprintf(stderr, fmt, ap);
-    va_end(ap);
-    exit(EXIT_FAILURE);
-}
 
 static void hide_app()
 {
@@ -132,15 +124,15 @@ static void main_win_resize_handler(Ecore_Evas* main_win)
 int main(int argc, char **argv)
 {
     if(!evas_init())
-        die("Unable to initialize Evas\n");
+        err(1, "Unable to initialize Evas\n");
     if(!ecore_init())
-        die("Unable to initialize Ecore\n");
+        err(1, "Unable to initialize Ecore\n");
     if(!ecore_con_init())
-        die("Unable to initialize Ecore_Con\n");
+        err(1, "Unable to initialize Ecore_Con\n");
     if(!ecore_evas_init())
-        die("Unable to initialize Ecore_Evas\n");
+        err(1, "Unable to initialize Ecore_Evas\n");
     if(!edje_init())
-        die("Unable to initialize Edje\n");
+        err(1, "Unable to initialize Edje\n");
 
     setlocale(LC_ALL, "");
     textdomain("elowbatt");
