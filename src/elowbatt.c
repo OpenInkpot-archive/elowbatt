@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2009 Alexander Kerner <lunohod@openinkpot.org>
- * Copyright © 2009 Mikhail Gusarov <dottedmag@dottedmag.net>
+ * Copyright © 2009,2010 Mikhail Gusarov <dottedmag@dottedmag.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 #include <libkeys.h>
 
 #include <libeoi_themes.h>
+#include <libeoi_dialog.h>
 
 #ifndef DATADIR
 #define DATADIR "."
@@ -165,14 +166,20 @@ int main(int argc, char **argv)
     Evas_Object *edje
         = eoi_create_themed_edje(main_canvas, "elowbatt", "elowbatt");
     evas_object_name_set(edje, "edje");
-    evas_object_move(edje, 0, 0);
-    evas_object_resize(edje, 600, 800);
-    evas_object_show(edje);
     evas_object_focus_set(edje, 1);
     evas_object_event_callback_add(edje, EVAS_CALLBACK_KEY_UP, &key_handler, keys);
+    edje_object_part_text_set(edje, "elowbatt/text",
+                              gettext("Please recharge your device"));
 
-    edje_object_part_text_set(edje, "elowbatt/title", gettext("Low Battery"));
-    edje_object_part_text_set(edje, "elowbatt/text", gettext("Please recharge your device"));
+    Evas_Object *dlg = eoi_dialog_create("dlg", edje);
+    eoi_dialog_title_set(dlg, gettext("Low Battery"));
+    ecore_evas_object_associate(main_win, dlg, 0);
+
+    Evas_Object *icon = eoi_create_themed_edje(main_canvas, "elowbatt", "icon");
+    edje_object_part_swallow(dlg, "icon", icon);
+
+    evas_object_resize(dlg, 600, 800);
+    evas_object_show(dlg);
 
     ecore_main_loop_begin();
 
