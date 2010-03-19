@@ -43,51 +43,56 @@
 
 Ecore_Evas *main_win;
 
-void exit_all(void* param) { ecore_main_loop_quit(); }
+static void
+exit_all(void *param)
+{
+    ecore_main_loop_quit();
+}
 
-static void hide_app()
+static void
+hide_app()
 {
     ecore_evas_hide(main_win);
 }
 
-typedef struct
-{
+typedef struct {
     char* msg;
     int size;
 } client_data_t;
 
-
 static void
 key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 {
-    const char* action = keys_lookup_by_event((keys_t*)data, "default",
+    const char *action = keys_lookup_by_event((keys_t*)data, "default",
                                               (Evas_Event_Key_Up*)event_info);
 
-    if(action && !strcmp(action, "Close"))
+    if (action && !strcmp(action, "Close"))
         hide_app();
 }
 
-static int _client_add(void* param, int ev_type, void* ev)
+static int
+_client_add(void *param, int ev_type, void *ev)
 {
-    Ecore_Con_Event_Client_Add* e = ev;
-    client_data_t* msg = malloc(sizeof(client_data_t));
+    Ecore_Con_Event_Client_Add *e = ev;
+    client_data_t *msg = malloc(sizeof(client_data_t));
     msg->msg = strdup("");
     msg->size = 0;
     ecore_con_client_data_set(e->client, msg);
     return 0;
 }
 
-static int _client_del(void* param, int ev_type, void* ev)
+static int
+_client_del(void *param, int ev_type, void *ev)
 {
-    Ecore_Con_Event_Client_Del* e = ev;
-    client_data_t* msg = ecore_con_client_data_get(e->client);
+    Ecore_Con_Event_Client_Del *e = ev;
+    client_data_t *msg = ecore_con_client_data_get(e->client);
 
     /* Handle */
-    if(strlen(LOWBATT) == msg->size && !strncmp(LOWBATT, msg->msg, msg->size)) {
+    if (strlen(LOWBATT) == msg->size && !strncmp(LOWBATT, msg->msg, msg->size)) {
         ecore_evas_show(main_win);
     }
 
-    if(strlen(CHARGING) == msg->size && !strncmp(CHARGING, msg->msg, msg->size))
+    if (strlen(CHARGING) == msg->size && !strncmp(CHARGING, msg->msg, msg->size))
         hide_app();
 
     free(msg->msg);
@@ -95,45 +100,47 @@ static int _client_del(void* param, int ev_type, void* ev)
     return 0;
 }
 
-static int _client_data(void* param, int ev_type, void* ev)
+static int
+_client_data(void *param, int ev_type, void *ev)
 {
-    Ecore_Con_Event_Client_Data* e = ev;
-    client_data_t* msg = ecore_con_client_data_get(e->client);
+    Ecore_Con_Event_Client_Data *e = ev;
+    client_data_t *msg = ecore_con_client_data_get(e->client);
     msg->msg = realloc(msg->msg, msg->size + e->size);
     memcpy(msg->msg + msg->size, e->data, e->size);
     msg->size += e->size;
     return 0;
 }
 
-static void main_win_resize_handler(Ecore_Evas* main_win)
+static void
+main_win_resize_handler(Ecore_Evas *main_win)
 {
     ecore_evas_hide(main_win);
     int w, h;
-    Evas* canvas = ecore_evas_get(main_win);
+    Evas *canvas = ecore_evas_get(main_win);
     evas_output_size_get(canvas, &w, &h);
 
-    Evas_Object* edje = evas_object_name_find(canvas, "edje");
+    Evas_Object *edje = evas_object_name_find(canvas, "edje");
     evas_object_resize(edje, w, h);
     ecore_evas_show(main_win);
 }
 
 int main(int argc, char **argv)
 {
-    if(!evas_init())
+    if (!evas_init())
         err(1, "Unable to initialize Evas\n");
-    if(!ecore_init())
+    if (!ecore_init())
         err(1, "Unable to initialize Ecore\n");
-    if(!ecore_con_init())
+    if (!ecore_con_init())
         err(1, "Unable to initialize Ecore_Con\n");
-    if(!ecore_evas_init())
+    if (!ecore_evas_init())
         err(1, "Unable to initialize Ecore_Evas\n");
-    if(!edje_init())
+    if (!edje_init())
         err(1, "Unable to initialize Edje\n");
 
     setlocale(LC_ALL, "");
     textdomain("elowbatt");
 
-    keys_t* keys = keys_alloc("elowbatt");
+    keys_t *keys = keys_alloc("elowbatt");
 
     ecore_con_server_add(ECORE_CON_LOCAL_USER, "elowbatt", 0, NULL);
 
