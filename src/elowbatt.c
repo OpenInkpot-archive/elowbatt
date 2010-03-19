@@ -23,6 +23,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <libintl.h>
+#include <locale.h>
 
 #include <Ecore.h>
 #include <Ecore_X.h>
