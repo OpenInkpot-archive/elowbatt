@@ -1,0 +1,15 @@
+*.mo
+.deps
+Makefile
+Makefile.in
+*.o
+src/elowbatt
+aclocal.m4
+autom4te.cache
+config.log
+config.status
+configure
+depcomp
+install-sh
+missing
+*.edj
