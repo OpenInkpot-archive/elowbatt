@@ -1,3 +1,10 @@
+elowbatt (0.3.9) zelazny; urgency=low
+
+  * eoi-dialogize elowbatt (includes new theme)
+  * Code and packaging cleanup
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Mon, 22 Mar 2010 05:54:46 +0600
+
 elowbatt (0.3.8) zelazny; urgency=low
 
   * New translations: Japanese, French.
