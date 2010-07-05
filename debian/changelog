@@ -1,3 +1,16 @@
+elowbatt (0.3.10) zelazny; urgency=low
+
+  [ Rob ]
+  * l10n: Dutch
+
+  [ Tomasz Długosz ]
+  * l10n: initial swedish translation
+
+  [ Alexander Kerner ]
+  * Adjustment to ecore API changes
+
+ -- Alexander Kerner <lunohod@openinkpot.org>  Mon, 05 Jul 2010 08:06:42 +0200
+
 elowbatt (0.3.9) zelazny; urgency=low
 
   * eoi-dialogize elowbatt (includes new theme)
