@@ -70,7 +70,7 @@ key_handler(void *data, Evas *evas, Evas_Object *obj, void *event_info)
         hide_app();
 }
 
-static int
+static Eina_Bool
 _client_add(void *param, int ev_type, void *ev)
 {
     Ecore_Con_Event_Client_Add *e = ev;
@@ -81,7 +81,7 @@ _client_add(void *param, int ev_type, void *ev)
     return 0;
 }
 
-static int
+static Eina_Bool
 _client_del(void *param, int ev_type, void *ev)
 {
     Ecore_Con_Event_Client_Del *e = ev;
@@ -100,7 +100,7 @@ _client_del(void *param, int ev_type, void *ev)
     return 0;
 }
 
-static int
+static Eina_Bool
 _client_data(void *param, int ev_type, void *ev)
 {
     Ecore_Con_Event_Client_Data *e = ev;
