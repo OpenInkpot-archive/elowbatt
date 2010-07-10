@@ -142,7 +142,7 @@ int main(int argc, char **argv)
 
     keys_t *keys = keys_alloc("elowbatt");
 
-    ecore_con_server_add(ECORE_CON_LOCAL_USER, "elowbatt", 0, NULL);
+    ecore_con_server_add(ECORE_CON_LOCAL_SYSTEM, "elowbatt", 0, NULL);
 
     ecore_event_handler_add(ECORE_CON_EVENT_CLIENT_ADD, _client_add, NULL);
     ecore_event_handler_add(ECORE_CON_EVENT_CLIENT_DATA, _client_data, NULL);
