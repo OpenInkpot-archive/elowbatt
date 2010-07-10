@@ -1,3 +1,9 @@
+elowbatt (0.3.11) zelazny; urgency=low
+
+  * Switch ecore-con server from LOCAL_USER to LOCAL_SYSTEM
+
+ -- Alexander Kerner <lunohod@openinkpot.org>  Sat, 10 Jul 2010 21:31:53 +0200
+
 elowbatt (0.3.10) zelazny; urgency=low
 
   [ Rob ]
