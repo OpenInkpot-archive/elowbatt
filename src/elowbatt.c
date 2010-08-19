@@ -150,7 +150,7 @@ int main(int argc, char **argv)
 
     ecore_x_io_error_handler_set(exit_all, NULL);
 
-    main_win = ecore_evas_software_x11_new(0, 0, 0, 0, 600, 800);
+    main_win = ecore_evas_software_x11_8_new(0, 0, 0, 0, 600, 800);
     ecore_evas_borderless_set(main_win, 0);
     ecore_evas_title_set(main_win, "elowbatt");
     ecore_evas_name_class_set(main_win, "elowbatt", "elowbatt");
