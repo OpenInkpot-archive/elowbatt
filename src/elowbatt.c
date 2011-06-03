@@ -89,6 +89,7 @@ _client_del(void *param, int ev_type, void *ev)
 
     /* Handle */
     if (strlen(LOWBATT) == msg->size && !strncmp(LOWBATT, msg->msg, msg->size)) {
+        ecore_evas_hide(main_win);
         ecore_evas_show(main_win);
     }
 
