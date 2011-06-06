@@ -1,3 +1,9 @@
+elowbatt (0.3.13) zelazny; urgency=low
+
+  * Fix issue with not raising window
+
+ -- Alexander Kerner <lunohod@openinkpot.org>  Mon, 06 Jun 2011 23:27:42 +0200
+
 elowbatt (0.3.12) zelazny; urgency=low
 
   * Use 8bpp engine
