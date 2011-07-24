@@ -170,13 +170,14 @@ int main(int argc, char **argv)
 
     Evas_Object *dlg = eoi_dialog_create("dlg", edje);
     eoi_dialog_title_set(dlg, gettext("Low Battery"));
-    ecore_evas_object_associate(main_win, dlg, 0);
 
     Evas_Object *icon = eoi_create_themed_edje(main_canvas, "elowbatt", "icon");
     edje_object_part_swallow(dlg, "icon", icon);
 
     evas_object_resize(dlg, 600, 800);
     evas_object_show(dlg);
+
+    ecore_evas_object_associate(main_win, dlg, 0);
 
     ecore_main_loop_begin();
 
